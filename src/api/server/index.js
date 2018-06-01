@@ -18,10 +18,11 @@ app.set('trust proxy', 1);
 app.use(helmet());
 app.all('*', (req, res, next) => {
   // CORS headers
-  res.header("Access-Control-Allow-Origin", security.getAccessControlAllowOrigin());
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  //res.header("Access-Control-Allow-Origin", security.getAccessControlAllowOrigin());
+  res.header('Access-Control-Allow-Origin', req.headers.origin || "*");
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,HEAD,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Key, Authorization');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Key, Authorization, x-id, Content-Length');
   next();
 });
 app.use(responseTime());
