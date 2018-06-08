@@ -1,10 +1,10 @@
 // config used by server side only
 
-const dbHost = process.env.DB_HOST || 'ds151180.mlab.com';
-const dbPort = process.env.DB_PORT || 51180;
-const dbName = process.env.DB_NAME || 'heroku_1mlp8fdc'
-const dbUser = process.env.DB_USER || 'heroku_1mlp8fdc';
-const dbPass = process.env.DB_PASS || 'luatvidai27';
+const dbHost = process.env.DB_HOST || '127.0.0.1';
+const dbPort = process.env.DB_PORT || 27017;
+const dbName = process.env.DB_NAME || 'shop'
+const dbUser = process.env.DB_USER || '';
+const dbPass = process.env.DB_PASS || '';
 const dbCred = dbUser.length > 0 || dbPass.length > 0 ? `${dbUser}:${dbPass}@` : '';
 const dbUrl = `mongodb://${dbCred}${dbHost}:${dbPort}/${dbName}`;
 
@@ -28,20 +28,20 @@ module.exports = {
   mongodbServerUrl: dbUrl,
 
   smtpServer: {
-    host: '',
-    port: 0,
-    secure: true,
-    user: '',
-    pass: '',
-    fromName: '',
-    fromAddress: ''
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: false,
+    user: 'luat.c.nguyen@gmail.com',
+    pass: 'LUATvidai27@',
+    fromName: 'Luat_Nguyen',
+    fromAddress: 'luat.c.nguyen@gmail.com'
   },
 
   // key to sign tokens
-  jwtSecretKey: '-',
+  jwtSecretKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
 
   // key to sign store cookies
-  cookieSecretKey: '-',
+  cookieSecretKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
 
   // path to uploads
   categoriesUploadPath: 'public/content/images/categories',
@@ -56,7 +56,7 @@ module.exports = {
   themeAssetsUploadUrl: '/assets/images',
 
   // store UI language
-  language: 'en',
+  language: 'vn',
 
   // used by API
   orderStartNumber: 1000,
